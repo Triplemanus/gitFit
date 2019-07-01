@@ -9,6 +9,10 @@ class User {
     this.friends = user.friends
   }
 
+  returnUserName(){
+    return this.name;
+  }
+
 }
 
 if (typeof module !== 'undefined') {
