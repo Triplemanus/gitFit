@@ -167,7 +167,7 @@ class Activity {
     return correctUserIds.map(user => {
       return user.numSteps;
     })
-
+  }
   getThreeDayIncreasingSteps() {
     let correctUser = this.findCorrectUser();
     let threeInARow = [];
