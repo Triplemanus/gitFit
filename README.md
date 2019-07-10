@@ -10,8 +10,8 @@ The goals of this project included:
 
 ## Screenshots
 
-[Desktop view](images/Desktop-view.png)
-[Secondary desktop view](images/Secondary-desktop-view.png)
+[Desktop view](Images/Desktop-view.png)
+[Secondary desktop view](Images/Secondary-desktop-view.png)
 
 ### Authors:
 * Eric O'Neill ([eoneill23](https://github.com/eoneill23))
