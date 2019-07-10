@@ -176,4 +176,18 @@ main {
 .logo__section {
   background-color: #51768C;
   height: 680px;
+  display: block
+}
+
+.logo__section-img {
+  height: 600px;
+  width: 300px
+  margin: auto;
+  fill: white;
+}
+
+.logo__section-authors {
+  color: white;
+  font-weight: 400;
+  margin-left: 20%;
 }
