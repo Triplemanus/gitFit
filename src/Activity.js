@@ -168,7 +168,7 @@ class Activity {
       return user.numSteps;
     })
   }
-
+  
   getThreeDayIncreasingSteps() {
     let correctUser = this.findCorrectUser();
     let threeInARow = [];
