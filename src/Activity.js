@@ -1,15 +1,15 @@
 if (typeof module !== "undefined") {
-filePath = require("../data/activitySub2")
-userData = require("../data/UserSub")
-User = require("../src/User")
+  activityFilePath = require("../data/activitySub")
+  userData = require("../data/UserSub")
+  User = require("../src/User")
 } else {
-  filePath = activityData;
+  activityFilePath = activityData;
 }
 
 class Activity {
   constructor(userID) {
     this.userID = userID;
-    this.data = filePath;
+    this.data = activityFilePath;
   }
 
   instantiateUsers() {
@@ -27,8 +27,8 @@ class Activity {
 
   findCorrectUserDate(date) {
     return this.data.filter((user) => {
-        return user.date === date;
-      });
+      return user.date === date;
+    });
   }
 
   returnFlightsOfStairs(date) {
@@ -47,7 +47,7 @@ class Activity {
       return user.userID === correctUser.id
     });
     return user.numSteps;
-  };
+  }
 
   returnMilesWalked(date) {
     let correctUser =  this.findCorrectUser();
@@ -63,7 +63,7 @@ class Activity {
     let correctUser =  this.findCorrectUser();
     let correctUserDate = this.findCorrectUserDate(date);
     let user = correctUserDate.find((user) =>{
-        return user.userID === correctUser.id
+      return user.userID === correctUser.id
     });
     return user.minutesActive;
   }
@@ -82,7 +82,7 @@ class Activity {
     let correctUser = this.findCorrectUser();
     let correctUserDate = this.findCorrectUserDate(date);
     let user = correctUserDate.find((user) =>{
-        return user.userID === correctUser.id;
+      return user.userID === correctUser.id;
     });
     return user.numSteps >= correctUser.dailyStepGoal ? true : false;
   }
@@ -108,7 +108,6 @@ class Activity {
     return Math.max(...flights)
   }
 
-
   returnWeekInfo(startDate, endDate) {
     let firstIndex = this.data.findIndex(el => {
       return el.date === startDate;
@@ -118,12 +117,13 @@ class Activity {
       return dates
     }, [])
     let lastIndex = allDates.lastIndexOf(endDate);
-    return this.data.slice(firstIndex, lastIndex + 1)
+    return this.data.slice(firstIndex, lastIndex)
   }
 
   returnFriends(startDate, endDate) {
     let correctUser =  this.findCorrectUser();
     let correctWeek = this.returnWeekInfo(startDate, endDate);
+    correctUser.friends.includes(correctUser.id) ? '' : correctUser.friends.push(correctUser.id);
     let friends = correctWeek.reduce((matchingUsers, user) => {
       correctUser.friends.forEach(num => {
         if (num === user.userID)  {
@@ -141,14 +141,14 @@ class Activity {
       return rightUsers;
     }, []);
     let uniqueFriends = matchingFriends.filter((user, index) => {
-      return matchingFriends.indexOf(user) == index;
+      return matchingFriends.indexOf(user) === index;
     })
     return uniqueFriends.reduce((userObj, user) => {
       let obj = {
         name: user.name,
         numSteps: friends.reduce((steps, friend) => {
           if (friend.userID === user.id) {
-             return steps += friend.numSteps;
+            return steps += friend.numSteps
           }
           return steps;
         }, 0)
@@ -162,18 +162,18 @@ class Activity {
     let correctUser =  this.findCorrectUser();
     let correctWeek = this.returnWeekInfo(startDate, endDate);
     let correctUserIds = correctWeek.filter(user => {
-     return user.userID === correctUser.id
+      return user.userID === correctUser.id
     })
     return correctUserIds.map(user => {
       return user.numSteps;
     })
   }
+  
   getThreeDayIncreasingSteps() {
     let correctUser = this.findCorrectUser();
     let threeInARow = [];
     let threeInARowDates = [];
     this.data.forEach(function(user) {
-      //console.log(`steps, date are: ${user.numSteps} ${user.date}`);
       if (threeInARow.length >= 3) {
         threeInARow.shift();
       }
@@ -184,8 +184,41 @@ class Activity {
     });
     return threeInARowDates;
   }
+
+  getWeeklyMins(startDate, endDate) {
+    let correctUser =  this.findCorrectUser();
+    let correctWeek = this.returnWeekInfo(startDate, endDate);
+    let correctUserIds = correctWeek.filter(user => {
+      return user.userID === correctUser.id
+    })
+    return correctUserIds.map(user => {
+      return user.minutesActive;
+    })
+  }
+
+  getWeeklyFlights(startDate, endDate) {
+    let correctUser =  this.findCorrectUser();
+    let correctWeek = this.returnWeekInfo(startDate, endDate);
+    let correctUserIds = correctWeek.filter(user => {
+      return user.userID === correctUser.id
+    })
+    return correctUserIds.map(user => {
+      return user.flightsOfStairs;
+    })
+  }
+
+  returnTotalWeeklySteps(startDate, endDate) {
+    let correctUser =  this.findCorrectUser();
+    let correctWeek = this.returnWeekInfo(startDate, endDate);
+    let correctUserIds = correctWeek.filter(user => {
+      return user.userID === correctUser.id
+    })
+    return correctUserIds.reduce((totalSteps, user) => {
+      return totalSteps += user.numSteps;
+    }, 0)
+  }
 }
 
 if (typeof module !== "undefined") {
-module.exports = Activity
+  module.exports = Activity
 }

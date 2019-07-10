@@ -128,15 +128,7 @@ $( window ).on( "load", () => {
       labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
       datasets: [
         { 
-          data: [
-            activity.returnSteps("2019/06/15"),
-            activity.returnSteps("2019/06/16"),
-            activity.returnSteps("2019/06/17"),
-            activity.returnSteps("2019/06/18"),
-            activity.returnSteps("2019/06/19"),
-            activity.returnSteps("2019/06/20"),
-            activity.returnSteps("2019/06/21")
-          ],
+          data: activity.returnWeeklySteps("2019/06/15", "2019/06/22"),
           label: "Your step count",
           borderColor: "#3e95cd",
           fill: false
@@ -156,15 +148,7 @@ $( window ).on( "load", () => {
     data: {
       labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
       datasets: [{ 
-          data: [
-          activity.returnMinutesActive("2019/06/15"),
-          activity.returnMinutesActive("2019/06/16"),
-          activity.returnMinutesActive("2019/06/17"),
-          activity.returnMinutesActive("2019/06/18"),
-          activity.returnMinutesActive("2019/06/19"),
-          activity.returnMinutesActive("2019/06/20"),
-          activity.returnMinutesActive("2019/06/21")
-          ],
+          data: activity.getWeeklyMins("2019/06/15", "2019/06/21"),
           label: "Your minutes active",
           borderColor: "#3cba9f",
           fill: false
@@ -184,15 +168,7 @@ $( window ).on( "load", () => {
     data: {
       labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
       datasets: [{ 
-        data: [
-          activity.returnFlightsOfStairs("2019/06/15"),
-          activity.returnFlightsOfStairs("2019/06/16"),
-          activity.returnFlightsOfStairs("2019/06/17"),
-          activity.returnFlightsOfStairs("2019/06/18"),
-          activity.returnFlightsOfStairs("2019/06/19"),
-          activity.returnFlightsOfStairs("2019/06/20"),
-          activity.returnFlightsOfStairs("2019/06/21")
-        ],
+        data: activity.getWeeklyFlights("2019/06/15", "2019/06/22"),
         label: "Your flights of stairs climbed",
         borderColor: "#8e5ea2",
         fill: false
@@ -214,15 +190,6 @@ let userWeeklyHydration = new Chart($(".hydration__chart-weeklyOz-oneUser"), {
   data: {
     labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
     datasets: [{ 
-      data: [
-        hydration.returnSpecificDayOz("2019/06/15"),
-        hydration.returnSpecificDayOz("2019/06/16"),
-        hydration.returnSpecificDayOz("2019/06/17"),
-        hydration.returnSpecificDayOz("2019/06/18"),
-        hydration.returnSpecificDayOz("2019/06/19"),
-        hydration.returnSpecificDayOz("2019/06/20"),
-        hydration.returnSpecificDayOz("2019/06/21"),
-      ],
       label: "Water you consumed each day (oz)",
       borderColor: "#8e5ea2",
       fill: false
@@ -233,6 +200,26 @@ let userWeeklyHydration = new Chart($(".hydration__chart-weeklyOz-oneUser"), {
     title: {
       display: true,
       text: 'Your weekly water consumption overview'
+    }
+  }
+});
+
+/////////////////////////////Step Challenge Chart/////////////////////////////////
+let stepChallenge = new Chart($(".main__step-challengeChart"), {
+  type: 'bar',
+  data: {
+    labels: activity.returnFriends("2019/06/15", "2019/06/22").map(user => user.name),
+    datasets: [{
+      label: "Number of steps",
+      backgroundColor: "#3e95cd",
+      data: activity.returnFriends("2019/06/15", "2019/06/22").map(user => user.numSteps)
+    },
+    ]
+    },
+  options: {
+    title: {
+      display: true,
+      text: 'Weekly step challenge!'
     }
   }
 });
