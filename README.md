@@ -10,9 +10,10 @@ The goals of this project included:
 
 ## Screenshots
 
-[Desktop view]()
-[Secondary desktop view]()
+[Desktop view](images/Desktop-view.png)
+[Secondary desktop view](images/Secondary-desktop-view.png)
 
 ### Authors:
 * Eric O'Neill ([eoneill23](https://github.com/eoneill23))
 * Jon O'Drobinak ([Triplemanus](https://github.com/Triplemanus))
+
