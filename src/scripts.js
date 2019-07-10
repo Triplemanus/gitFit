@@ -59,6 +59,7 @@ $( window ).on( "load", () => {
   }
 
   const randomID = newIDs[0];
+
   const userRepository = new UserRepository ();
   const sleepRepository = new SleepRepository(randomID);
   const sleep = new Sleep(randomID);
@@ -287,21 +288,19 @@ let stepChallenge = new Chart($(".main__step-challengeChart"), {
     data: {
       labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
       datasets: [{ 
-        data: [
-          //sleepRepository.getHoursSleptForWeek(userID, "2019/06/15")
-          sleep.getHoursSleptOnDay(randomID, currentDate()),
-          sleep.getHoursSleptOnDay(randomID, currentDate()) + 1.5,
-          sleep.getHoursSleptOnDay(randomID, currentDate()) + 2,
-          sleep.getHoursSleptOnDay(randomID, currentDate()) - 3,
-          sleep.getHoursSleptOnDay(randomID, currentDate()) - 2,
-          sleep.getHoursSleptOnDay(randomID, currentDate()) + 1,
-          sleep.getHoursSleptOnDay(randomID, currentDate()) - 2.5
-        ],
         label: "Your hours slept each day",
         backgroundColor: "#548C72",
-        borderColor: "#8e5ea2"
-      }  
-      ]
+        borderColor: "#8e5ea2",
+        data:  
+          sleepRepository.getHoursSleptForWeek(randomID, currentDate()),
+      },
+      { 
+        label: "Your sleep quality each day",
+        backgroundColor: "#edc63d",
+        borderColor: "#8e5ea2",
+        data:  
+        sleepRepository.getSleepQualityForWeek(randomID, currentDate()),
+      }]
     },
     options: {
       title: {
@@ -310,5 +309,4 @@ let stepChallenge = new Chart($(".main__step-challengeChart"), {
       }
     }
   });
-
 });
