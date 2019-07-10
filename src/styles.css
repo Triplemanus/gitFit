@@ -48,9 +48,6 @@ h1 {
   font-size: 12px;
   margin-top: 10px;
 }
-.aside__h2 {
-
-}
 
 .aside__figure {
   display: flex;
@@ -58,7 +55,6 @@ h1 {
   justify-content: space-between;
   height: 50%;
   margin-top: 60px;
-
 }
 
 .user-label {
@@ -79,7 +75,7 @@ main {
 
 .main__column-one,
 .main__column-two {
-  width: 39%;
+  width: 41%;
 }
 
 .main__column-one {
@@ -89,13 +85,14 @@ main {
 .main__section {
   height: 650px;
   padding: 1em;
-  border: 1px solid black;
 }
 
 /* ----------------Main Activity Section----------------- */
 
 .main__activity {
-  height: 930px;
+  height: 1050px;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 .activity__header {
@@ -119,6 +116,11 @@ main {
 
 /* ----------------Main Hydration Section----------------- */
 
+.main__hydration {
+  height: 560px;
+  border-bottom: 1px solid black;
+}
+
 .hydration__header {
   font-weight: 700;
 }
@@ -138,67 +140,40 @@ main {
   padding-bottom: .5em;
 }
 
-/* --------------------------------- */
-.activity__chart-day-allUsers {
-  /* background-color: red; */
+/* ----------------Main Step Challenge Section----------------- */
+
+.main__step-challenge {
+  height: 470px;
+  border-bottom: 1px solid black;
 }
 
-.activity__chart-weeklyView-oneUser {
-  /* background-color: blue */
+.step-challenge-header {
+  font-weight: 700;
 }
 
-
-
-/*------widget------*/
-.widget {
-  border: 1px solid gray;
-  height: auto;
-  width: 95%;
-  border-radius: 5px;
-  margin: 10px;
-  background-color: #fff;
+.step-challenge__header-div {
+  border-bottom: 1px solid gray;
 }
 
-.widget-main-header {
-  padding: 7px;
-  font-weight: 400;
-  font-size: 16px;
+/* ------------------------Main Sleep Section-------------------- */
+
+.main__sleep {
+  height: 660px;
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
-.widget-header {
-  font-size: 15px;
-  padding: 7px;
+.hours-slept__header-input {
+  font-weight: 700;
 }
 
-
-
-/*-----------Sleep---------*/
-.hours_slept_inner-data-container {
-  display: flex;
-  margin-left: auto;
-  margin-right: auto;
-  width: 90%;
+.sleep__header-div {
+  border-bottom: 1px solid gray;
 }
 
-.hours_slept_inner-data-one,
-.hours_slept_inner-data-two{
-  margin-left: 15px;
-  margin-right: 15px;
-  width: 50%;
-}
+/* ---------------------------Logo Section------------------------ */
 
-.hours-slept__today-table {
-  margin-top: 20px;
-}
-
-.red {
-  border: #D96459 1px solid;
-  color : #D96459;
-  background-color: rgba(217, 100, 89, 0.05)
-}
-
-.red-b {
-  background-color: #D96459;
-  color : #fff;
-  border: 1px solid #D96459;
+.logo__section {
+  background-color: #51768C;
+  height: 680px;
 }

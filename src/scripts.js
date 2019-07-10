@@ -48,24 +48,17 @@ const asideDate = () => {
   return formatted_date;
 };
 
-// $( document ).ready( () => {
-//   console.log( "document loaded" );
-// });
-
 $( window ).on( "load", () => {
   console.log( "window loaded" );
   var newIDs = [];
   for (let i = 1; newIDs.length < 5; i++) {
     const randomID = Math.floor(Math.random() * userData.length) + 1;
-   // const randomID = Math.floor(Math.random() * 10) + 1; //Temporary fixed userData length for sample data file
     if (newIDs.indexOf(randomID) === -1) {
       newIDs.push(randomID);
     }
   }
 
   const randomID = newIDs[0];
-
-  //const user = new User();
   const userRepository = new UserRepository ();
   const sleepRepository = new SleepRepository(randomID);
   const sleep = new Sleep(randomID);
@@ -77,18 +70,12 @@ $( window ).on( "load", () => {
   populateActivityNums();
   populateHydrationNums();
 
-
-  //$(".aside__welcome-name").html(user.getUserNameFromID(1));
-
   $(".aside__user-name").html(userRepository.returnUserData(randomID).name.split(' ')[0]);
   $(".section_full-user-name").html(userRepository.returnUserData(randomID).name);
   $(".section__address").html(userRepository.returnUserData(randomID).address);
   $(".section__email").html(userRepository.returnUserData(randomID).email);
   $(".section__stride-length").html(userRepository.returnUserData(randomID).strideLength);
   $(".aside__date").html(asideDate());
-  // populateAvgActivityChart();
-
-
 
   function populateActivityNums() {
     $(".activity__steps-stepNum").html(activity.returnSteps("2019/06/15"));
@@ -202,6 +189,7 @@ let userWeeklyHydration = new Chart($(".hydration__chart-weeklyOz-oneUser"), {
   data: {
     labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
     datasets: [{ 
+      data: hydration.returnWeeklyHydration("2019/06/15", "2019/06/22"),
       label: "Water you consumed each day (oz)",
       borderColor: "#8e5ea2",
       fill: false
@@ -324,4 +312,3 @@ let stepChallenge = new Chart($(".main__step-challengeChart"), {
   });
 
 });
-
