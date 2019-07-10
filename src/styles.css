@@ -12,23 +12,23 @@ body {
 }
 
 main {
-  width: 100%;
   display: flex;
+  width: 100%;
 }
 
 /* ----------------Aside----------------- */
 
 aside {
+  align-items: center;
   background-color: #51768C;
   border: solid 1px black;
   color: white;
   display: flex;
-  height: 100vh;
-  width: 320px; 
-  position: fixed;
   flex-direction: column;
-  align-items: center;
+  height: 100vh;
   padding: .5em 1em 0 1em;
+  position: fixed;
+  width: 320px; 
 }
 
 .aside__logo {
@@ -64,15 +64,15 @@ h1 {
 .aside__figure {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   height: 50%;
+  justify-content: space-between;
   margin-top: 60px;
 }
 
 .user-label {
   border-bottom: 1px solid lightgray;
-  font-size: 1.5em;
   color: rgba(255,255,255,0.6);
+  font-size: 1.5em;
 }
 
 .user-info {
@@ -103,9 +103,9 @@ main {
 /* ----------------Main Activity Section----------------- */
 
 .main__activity {
-  height: 1050px;
-  border-right: 1px solid black;
   border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  height: 1050px;
 }
 
 .activity__header {
@@ -130,8 +130,8 @@ main {
 /* ----------------Main Hydration Section----------------- */
 
 .main__hydration {
-  height: 560px;
   border-bottom: 1px solid black;
+  height: 560px;
 }
 
 .hydration__header {
