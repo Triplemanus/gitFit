@@ -9,8 +9,8 @@ The goals of this project included:
 * Deploy an NPM package (Charts.js in this case) to display data on the DOM.
 
 ## Screenshots
-[Desktop view](Images/Desktop-view.png)
-[Secondary desktop view](Images/Secondary-desktop-view.png)
+[Desktop view](.Images/Desktop-view.png)
+[Secondary desktop view](.Images/Secondary-desktop-view.png)
 
 ### Authors:
 * Eric O'Neill ([eoneill23](https://github.com/eoneill23))
