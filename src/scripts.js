@@ -1,55 +1,54 @@
-const currentDate = () => {
-  let fullDate = new Date();
-  let newDate = fullDate.getDate();
-  let twoDigitDate = 
-    fullDate.getDate()  >= 10 ? fullDate.getDate() : '0' + fullDate.getDate();
-  var twoDigitMonth =
-    fullDate.getMonth() + 1 >= 10
-      ? (fullDate.getMonth() + 1)
-      : "0" + (fullDate.getMonth() + 1);
-  var currentDate =
-    `${fullDate.getFullYear()}/${twoDigitMonth}/${twoDigitDate}`
-  return currentDate;
-};
-
-const asideDate = () => {
-  const months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec"
-  ];
-  const days = [
-    "Sunday",
-    "Monday",
-    "Tuesday",
-    "Wednesday",
-    "Thursday",
-    "Friday",
-    "Saturday"
-  ];
-  let current_datetime = new Date();
-  let formatted_date =
-    days[current_datetime.getDay()] +
-    " - " +
-    months[current_datetime.getMonth()] +
-    " " +
-    current_datetime.getDate() +
-    ", " +
-    current_datetime.getFullYear();
-  return formatted_date;
-};
-
 $( window ).on( "load", () => {
-  console.log( "window loaded" );
+  const currentDate = () => {
+    let fullDate = new Date();
+    let newDate = fullDate.getDate();
+    let twoDigitDate = 
+      fullDate.getDate()  >= 10 ? fullDate.getDate() : '0' + fullDate.getDate();
+    var twoDigitMonth =
+      fullDate.getMonth() + 1 >= 10
+        ? (fullDate.getMonth() + 1)
+        : "0" + (fullDate.getMonth() + 1);
+    var currentDate =
+      `${fullDate.getFullYear()}/${twoDigitMonth}/${twoDigitDate}`
+    return currentDate;
+  };
+  
+  const asideDate = () => {
+    const months = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec"
+    ];
+    const days = [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ];
+    let current_datetime = new Date();
+    let formatted_date =
+      days[current_datetime.getDay()] +
+      " - " +
+      months[current_datetime.getMonth()] +
+      " " +
+      current_datetime.getDate() +
+      ", " +
+      current_datetime.getFullYear();
+    return formatted_date;
+  };
+
   var newIDs = [];
   for (let i = 1; newIDs.length < 5; i++) {
     const randomID = Math.floor(Math.random() * userData.length) + 1;
@@ -97,7 +96,7 @@ $( window ).on( "load", () => {
       datasets: [
         {
           label: "Your stats",
-          backgroundColor: "#3e95cd",
+          backgroundColor: "#51768C",
           data: [
             activity.returnSteps("2019/06/15")/50, 
             activity.returnMinutesActive("2019/06/15"), 
@@ -130,7 +129,7 @@ $( window ).on( "load", () => {
         { 
           data: activity.returnWeeklySteps("2019/06/15", "2019/06/22"),
           label: "Your step count",
-          borderColor: "#3e95cd",
+          borderColor: "#51768C",
           fill: false
         }  
       ]
@@ -212,7 +211,7 @@ let stepChallenge = new Chart($(".main__step-challengeChart"), {
     labels: activity.returnFriends("2019/06/15", "2019/06/22").map(user => user.name),
     datasets: [{
       label: "Number of steps",
-      backgroundColor: "#3e95cd",
+      backgroundColor: "#51768C",
       data: activity.returnFriends("2019/06/15", "2019/06/22").map(user => user.numSteps)
     },
     ]
@@ -243,7 +242,7 @@ let stepChallenge = new Chart($(".main__step-challengeChart"), {
         },
         {
           label: "Your averages",
-          backgroundColor: "#D96459",
+          backgroundColor: "#8e5ea2",
           data: [
             sleep.getAvgHoursSlept(randomID),
             sleep.getAvgSleepQuality(randomID)
@@ -289,14 +288,14 @@ let stepChallenge = new Chart($(".main__step-challengeChart"), {
       labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
       datasets: [{ 
         label: "Your hours slept each day",
-        backgroundColor: "#548C72",
+        backgroundColor: "#8e5ea2",
         borderColor: "#8e5ea2",
         data:  
           sleepRepository.getHoursSleptForWeek(randomID, currentDate()),
       },
       { 
         label: "Your sleep quality each day",
-        backgroundColor: "#edc63d",
+        backgroundColor: "#51768C",
         borderColor: "#8e5ea2",
         data:  
         sleepRepository.getSleepQualityForWeek(randomID, currentDate()),
