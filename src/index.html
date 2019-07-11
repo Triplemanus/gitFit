@@ -36,46 +36,52 @@
     <main>
       <section class="main__column-one">
         <section class="main__activity main__section">
-          <div class="activity__header-div">
-            <h2 class="activity__header">Activity</h3>
+          <div class="activity__header-section">
+            <div class="activity__header-div">
+              <h2 class="activity__header">Activity</h3>
+            </div>
+            <div class="activity__info-div">
+              <h3 class="activity__info-header">Today at a glance:</h2>
+              <br>
+              <h4 class="activity__steps">You have taken <span class="activity__steps-stepNum">X</span> steps today.</h4>
+              <h4 class="activity__minsActive">You have been active for <span class="activity__minsActive-minsActive">X</span> minutes today.</h4>
+              <h4 class="activity__distance">You have walked <span class="activity__distance-distanceNum">X</span> miles today.</h4>
+            </div>
+            <figure>
+              <canvas class="activity__chart-day-allUsers" height="180" width="500"></canvas>
+              <canvas class="activity__chart-weeklySteps-oneUser" height="180" width="500"></canvas>
+              <canvas class="activity__chart-weeklyMins-oneUser" height="180" width="500"></canvas>
+              <canvas class="activity__chart-weeklyStairs-oneUser" height="180" width="500"></canvas>
+            </figure>
           </div>
-          <div class="activity__info-div">
-            <h3 class="activity__info-header">Today at a glance:</h2>
-            <br>
-            <h4 class="activity__steps">You have taken <span class="activity__steps-stepNum">X</span> steps today.</h4>
-            <h4 class="activity__minsActive">You have been active for <span class="activity__minsActive-minsActive">X</span> minutes today.</h4>
-            <h4 class="activity__distance">You have walked <span class="activity__distance-distanceNum">X</span> miles today.</h4>
-          </div>
-          <figure>
-            <canvas class="activity__chart-day-allUsers" height="180" width="500"></canvas>
-            <canvas class="activity__chart-weeklySteps-oneUser" height="180" width="500"></canvas>
-            <canvas class="activity__chart-weeklyMins-oneUser" height="180" width="500"></canvas>
-            <canvas class="activity__chart-weeklyStairs-oneUser" height="180" width="500"></canvas>
-          </figure>
         </section>
         <section class="main__sleep main__section">
-          <div class="sleep__header-div">          
-            <h2 class="hours-slept__header-input widget-main-header">Sleep</h3>
-          </div>
-          <figure>
-            <canvas class="sleep-hours-quality__chart" height="250" width="500"></canvas>
-            <canvas class="sleep-hours-quality-weekly__chart" height="250" width="500"></canvas>
-          </figure>
+          <section class="sleep__header-section">
+            <div class="sleep__header-div">          
+              <h2 class="hours-slept__header-input widget-main-header">Sleep</h3>
+            </div>
+          </section>
+            <figure>
+              <canvas class="sleep-hours-quality__chart" height="250" width="500"></canvas>
+              <canvas class="sleep-hours-quality-weekly__chart" height="250" width="500"></canvas>
+            </figure>
         </section>
       </section>
       <section class="main__column-two">
         <section class="main__hydration main__section">
-          <div class="hydration__header-div">
-            <h2 class="hydration__header">Hydration</h3>
+          <div class="hydration__header-section">
+            <div class="hydration__header-div">
+              <h2 class="hydration__header">Hydration</h3>
+            </div>
+            <div class="hydration__info-div">
+                <h3 class="hydration__info-header">Today at a glance:</h2>
+              <br>
+              <h4 class="hydration__steps">You have consumed <span class="hydration__steps-ozNum">X</span> ounces of water today.</h4>
+            </div>
+            <figure>
+              <canvas class="hydration__chart-weeklyOz-oneUser" height="350" width="500"></canvas>
+            </figure>
           </div>
-          <div class="hydration__info-div">
-              <h3 class="hydration__info-header">Today at a glance:</h2>
-            <br>
-            <h4 class="hydration__steps">You have consumed <span class="hydration__steps-ozNum">X</span> ounces of water today.</h4>
-          </div>
-          <figure>
-            <canvas class="hydration__chart-weeklyOz-oneUser" height="350" width="500"></canvas>
-          </figure>
         </section>
         <section class="main__step-challenge main__section">
           <div class="step-challenge__header-div">
