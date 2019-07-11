@@ -69,13 +69,16 @@ $( window ).on( "load", () => {
 
   populateActivityNums();
   populateHydrationNums();
+  populateAsideInfo();
 
-  $(".aside__user-name").html(userRepository.returnUserData(randomID).name.split(' ')[0]);
-  $(".section_full-user-name").html(userRepository.returnUserData(randomID).name);
-  $(".section__address").html(userRepository.returnUserData(randomID).address);
-  $(".section__email").html(userRepository.returnUserData(randomID).email);
-  $(".section__stride-length").html(userRepository.returnUserData(randomID).strideLength);
-  $(".aside__date").html(asideDate());
+  function populateAsideInfo() {
+    $(".aside__user-name").html(userRepository.returnUserData(randomID).name.split(' ')[0]);
+    $(".section_full-user-name").html(userRepository.returnUserData(randomID).name);
+    $(".section__address").html(userRepository.returnUserData(randomID).address);
+    $(".section__email").html(userRepository.returnUserData(randomID).email);
+    $(".section__stride-length").html(userRepository.returnUserData(randomID).strideLength);
+    $(".aside__date").html(asideDate());
+  }
 
   function populateActivityNums() {
     $(".activity__steps-stepNum").html(activity.returnSteps("2019/06/15"));
@@ -87,7 +90,7 @@ $( window ).on( "load", () => {
     $(".hydration__steps-ozNum").html(hydration.returnSpecificDayOz("2019/06/15"));
   }
 
-/////////////////////////////Activity Section Charts/////////////////////////////////
+  /////////////////////////////Activity Section Charts/////////////////////////////////
   
   let avgActivityChart = new Chart($('.activity__chart-day-allUsers'), {
     type: 'bar',
@@ -98,22 +101,22 @@ $( window ).on( "load", () => {
           label: "Your stats",
           backgroundColor: "#51768C",
           data: [
-            activity.returnSteps("2019/06/15")/50, 
+            activity.returnSteps("2019/06/15") / 50, 
             activity.returnMinutesActive("2019/06/15"), 
             activity.returnFlightsOfStairs("2019/06/15")
           ]
         }, {
-            label: "The average stats of all users",
-            backgroundColor: "#8e5ea2",
-            data: [
-            activityRepository.returnAvgSteps("2019/06/15")/50, 
+          label: "The average stats of all users",
+          backgroundColor: "#8e5ea2",
+          data: [
+            activityRepository.returnAvgSteps("2019/06/15") / 50, 
             activityRepository.returnAvgMins("2019/06/15"), 
             activityRepository.returnAvgStairs("2019/06/15")
           ]
-          }
-        ]
-      },
-      options: {
+        }
+      ]
+    },
+    options: {
       title: {
         display: true,
         text: 'How you stack up to all users'
@@ -133,7 +136,7 @@ $( window ).on( "load", () => {
           fill: false
         }  
       ]
-      },
+    },
     options: {
       title: {
         display: true,
@@ -147,15 +150,15 @@ $( window ).on( "load", () => {
     data: {
       labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
       datasets: [{ 
-          data: activity.getWeeklyMins("2019/06/15", "2019/06/21"),
-          label: "Your minutes active",
-          borderColor: "#3cba9f",
-          fill: false
-        } 
+        data: activity.getWeeklyMins("2019/06/15", "2019/06/21"),
+        label: "Your minutes active",
+        borderColor: "#3cba9f",
+        fill: false
+      } 
       ]
-      },
-      options: {
-        title: {
+    },
+    options: {
+      title: {
         display: true,
         text: 'Your weekly minutes active oveview'
       }
@@ -182,47 +185,48 @@ $( window ).on( "load", () => {
     }
   });
 
-/////////////////////////////Hydration Section Chart/////////////////////////////////
+  /////////////////////////////Hydration Section Chart/////////////////////////////////
 
-let userWeeklyHydration = new Chart($(".hydration__chart-weeklyOz-oneUser"), {
-  type: 'line',
-  data: {
-    labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-    datasets: [{ 
-      data: hydration.returnWeeklyHydration("2019/06/15", "2019/06/22"),
-      label: "Water you consumed each day (oz)",
-      borderColor: "#8e5ea2",
-      fill: false
-    }  
-    ]
-  },
-  options: {
-    title: {
-      display: true,
-      text: 'Your weekly water consumption overview'
+  let userWeeklyHydration = new Chart($(".hydration__chart-weeklyOz-oneUser"), {
+    type: 'line',
+    data: {
+      labels: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      datasets: [{ 
+        data: hydration.returnWeeklyHydration("2019/06/15", "2019/06/22"),
+        label: "Water you consumed each day (oz)",
+        borderColor: "#8e5ea2",
+        fill: false
+      }  
+      ]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Your weekly water consumption overview'
+      }
     }
-  }
-});
+  });
 
-/////////////////////////////Step Challenge Chart/////////////////////////////////
-let stepChallenge = new Chart($(".main__step-challengeChart"), {
-  type: 'bar',
-  data: {
-    labels: activity.returnFriends("2019/06/15", "2019/06/22").map(user => user.name),
-    datasets: [{
-      label: "Number of steps",
-      backgroundColor: "#51768C",
-      data: activity.returnFriends("2019/06/15", "2019/06/22").map(user => user.numSteps)
-    },
-    ]
-    },
-  options: {
-    title: {
-      display: true,
-      text: 'Weekly step challenge!'
+  /////////////////////////////Step Challenge Chart/////////////////////////////////
+
+  let stepChallenge = new Chart($(".main__step-challengeChart"), {
+    type: 'bar',
+    data: {
+      labels: activity.returnFriends("2019/06/15", "2019/06/22").map(user => user.name),
+      datasets: [{
+        label: "Number of steps",
+        backgroundColor: "#51768C",
+        data: activity.returnFriends("2019/06/15", "2019/06/22").map(user => user.numSteps)
+      },
+      ]
+      },
+    options: {
+      title: {
+        display: true,
+        text: 'Weekly step challenge!'
+      }
     }
-  }
-});
+  });
 
 /*---------------Sleep Section Chart-------------------*/
 
@@ -258,27 +262,27 @@ let stepChallenge = new Chart($(".main__step-challengeChart"), {
       },
       scales: {
         yAxes: [{
-            id: 'YourData',
-            ticks: {
-                beginAtZero: false,
-            },
-            scaleLabel: {
-                display: true,
-                labelString: 'Hours of Sleep'
-              }
+          id: 'YourData',
+          ticks: {
+            beginAtZero: false,
+          },
+          scaleLabel: {
+            display: true,
+            labelString: 'Hours of Sleep'
+          }
         },
-       {
-            id: 'AverageData',
-            position: 'right',
-            ticks: {
-                beginAtZero: true,
-            },
-            scaleLabel: {
-                display: true,
-                labelString: 'Quality of Sleep'
-              }
+        {
+          id: 'AverageData',
+          position: 'right',
+          ticks: {
+            beginAtZero: true,
+          },
+          scaleLabel: {
+            display: true,
+            labelString: 'Quality of Sleep'
+          }
         }]
-    }
+      }
     }
   });
 
