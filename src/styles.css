@@ -204,3 +204,58 @@ main {
   font-weight: 400;
   margin-left: 20%;
 }
+
+@media only screen and (min-width: 1200px) and (max-width: 1400px){
+
+  .main__hydration,
+  .main__activity,
+  .main__column-two,
+  .main__column-one {
+    min-width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .main__column-two {
+    border: solid 1px black;
+  
+  }
+  
+}
+/*mobile */
+@media only screen and (min-width: 600px) and (max-width: 1200px){
+  .main__hydration,
+  .main__activity,
+  .main__column-two,
+  .main__column-one {
+    min-width: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .main__column-two {
+    border: solid 1px black;
+    margin-left: 320px;
+  }
+  
+  main {
+	display: flex;
+	flex-direction: column;
+  justify-content: space-between;
+  background-color: rgb(235, 231, 231)
+  }
+
+  .activity__header-section {
+    max-height: 250px;
+  }
+
+  .hydration__header-section {
+    max-height: 200px;
+  }
+
+  .sleep__header-section {
+    max-height: 50px;
+  }
+}
