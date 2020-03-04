@@ -56,17 +56,14 @@ class SleepRepository {
     let averages = [], ids = [], finalIds = [];
     this.data.forEach((userData, i) => {
       let total = 0,  days = 0, index;
-      //console.log(`userData is ${userData.date}`)
       this.data.forEach((el, i) => {
         if (userData.date === sleepDate) {index = i;}
       });
     
-      console.log(`index is ${index}`)
       this.data.forEach((el, i) => {
         if (i >= index && i <= index + 6) {
           total += this.data[i].sleepQuality;
           days++;
-          console.log(`userDate is ${this.data[i].date}`)
         }
       });
 
